@@ -58,7 +58,7 @@ export default {
       return this.contentData[this.currentIndex];
     },
     contentMarked() {
-      return this.currentContent.yes === "TRUE";
+      return this.currentContent.accept === "TRUE";
     },
     operatorName() {
       return this.currentContent.name;
@@ -105,10 +105,10 @@ export default {
     },
     toggleContentMark(event) {
       if (event.target._modelValue) {
-        this.currentContent.yes = "TRUE";
+        this.currentContent.accept = "TRUE";
         this.contentChecked++
       } else {
-        this.currentContent.yes = "FALSE";
+        this.currentContent.accept = "FALSE";
         this.contentChecked--;
       }
     },

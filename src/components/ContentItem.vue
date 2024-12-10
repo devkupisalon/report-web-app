@@ -30,7 +30,7 @@ export default {
       return this.content.type;
     },
     contentUrl() {
-      return this.content.url;
+      return this.content.google_url;
     }
   },
   methods: {
