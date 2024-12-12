@@ -10,10 +10,10 @@ export default {
     script.async = true;
     script.onload = () => {
       this.tg = window.Telegram.WebApp;
-      this.tg.enableClosingConfirmation();
-      this.tg.requestFullscreen();
     };
     document.body.appendChild(script);
+    this.tg.enableClosingConfirmation();
+    this.tg.requestFullscreen();
   }
 };
 </script>
