@@ -5,7 +5,7 @@
       <SuccessPage />
     </div>
     <div v-else>
-      <div id="operator-name">Оператор {{ operatorName }}</div>
+      <div v-if="contentData !== {}" id="operator-name">Оператор {{ operatorName }}</div>
       <ContentItem v-if="currentContent" :content="currentContent" />
       <NavigationButtons @next="nextContent" @prev="prevContent" />
       <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
