@@ -77,10 +77,10 @@ export default {
     });
   },
   methods: {
-    async getFullScreenAndAddConfigrmPopupBeforeExit() {
+    getFullScreenAndAddConfigrmPopupBeforeExit() {
       console.log(test)
-      await this.tg.enableClosingConfirmation();
-      await this.tg.requestFullscreen();
+      this.tg.enableClosingConfirmation();
+      this.tg.requestFullscreen();
     },
     showTgMainButton() {
       this.tg.MainButton.setParams({ has_shine_effect: true, text: 'Отправить отчет' });
