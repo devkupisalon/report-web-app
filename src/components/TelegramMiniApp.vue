@@ -20,6 +20,7 @@ export default {
       }
 
       if (this.contentChecked === this.total) {
+        console.log(this);
         this.tg.MainButton.setParams({ has_shine_effect: true, text: 'Отправить отчет' });
         this.tg.MainButton.show();
         return true;
