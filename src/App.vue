@@ -30,7 +30,6 @@ export default {
       comment: '',
       contentData: {},
       contentChecked: 0,
-      tg: window.Telegram.WebApp,
       reportSent: false
     };
   },
@@ -75,6 +74,8 @@ export default {
     }
   },
   mounted() {
+    const tg = window.Telegram.WebApp;
+    console.log(tg);
     // const script = document.createElement('script');
     // script.src = 'https://telegram.org/js/telegram-web-app.js';
     // script.async = true;
@@ -82,12 +83,12 @@ export default {
     //   this.tg = window.Telegram.WebApp;
     // };
     // document.body.appendChild(script);
-    console.log(this.tg);
-    if (this.tg.ready()) {
-      this.tg.enableClosingConfirmation();
-      this.tg.requestFullscreen();
+   
+    if (tg.ready()) {
+      tg.enableClosingConfirmation();
+      tg.requestFullscreen();
 
-      this.tg.onEvent('mainButtonClicked', async () => {
+      tg.onEvent('mainButtonClicked', async () => {
         this.saveReport();
       });
     }
