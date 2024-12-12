@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TelegramMiniApp />
+    <!-- <TelegramMiniApp /> -->
     <div v-if="reportSent">
       <SuccessPage />
     </div>
@@ -20,7 +20,7 @@
 import ContentItem from './components/ContentItem.vue';
 import NavigationButtons from './components/NavigationButtons.vue';
 import MarkContentCheckbox from './components/MarkContentCheckbox.vue';
-import TelegramMiniApp from './components/TelegramMiniApp.vue';
+// import TelegramMiniApp from './components/TelegramMiniApp.vue';
 import SuccessPage from './components/SuccessPage.vue';
 
 export default {
@@ -74,7 +74,15 @@ export default {
       }
     }
   },
-  mounted() {
+ async mounted() {
+    const script = document.createElement('script');
+    script.src = 'https://telegram.org/js/telegram-web-app.js';
+    // script.async = true;
+    script.onload = () => {
+      this.tg = window.Telegram.WebApp;
+    };
+    document.body.appendChild(script);
+
     if (this.tg?.ready()) {
       this.tg.enableClosingConfirmation();
       this.tg.requestFullscreen();
