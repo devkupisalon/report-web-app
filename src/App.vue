@@ -78,32 +78,27 @@ export default {
     const script = document.createElement('script');
     script.src = 'https://telegram.org/js/telegram-web-app.js';
     script.async = true;
-
-    const loadScript = new Promise((resolve) => {
-      script.onload = resolve;
-      document.body.appendChild(script);
-    });
-
-    loadScript.then(() => {
+    script.onload = (this) => {
       this.tg = window.Telegram.WebApp;
+    };
+    document.body.appendChild(script);
 
-      if (this.tg.ready()) {
-        this.tg.enableClosingConfirmation();
-        this.tg.requestFullscreen();
+    if (this.tg.ready()) {
+      this.tg.enableClosingConfirmation();
+      this.tg.requestFullscreen();
 
-        this.tg.onEvent('mainButtonClicked', async () => {
-          this.saveReport();
-        });
-      }
+      this.tg.onEvent('mainButtonClicked', async () => {
+        this.saveReport();
+      });
+    }
 
-      if (this.contentChecked === this.total) {
-        this.tg.MainButton.setParams({ has_shine_effect: true, text: 'Отправить отчет' });
-        this.tg.MainButton.show();
-        return true;
-      } else {
-        return false;
-      }
-    });
+    if (this.contentChecked === this.total) {
+      this.tg.MainButton.setParams({ has_shine_effect: true, text: 'Отправить отчет' });
+      this.tg.MainButton.show();
+      return true;
+    } else {
+      return false;
+    }
     // this.$nextTick(() => {
     //   this.tg.onEvent('mainButtonClicked', async () => {
     //     this.saveReport();
