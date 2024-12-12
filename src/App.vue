@@ -77,7 +77,7 @@ export default {
     });
   },
   methods: {
-   async getFullScreenAndAddConfigrmPopupBeforeExit() {
+    getFullScreenAndAddConfigrmPopupBeforeExit() {
       console.log("test")
       this.tg.enableClosingConfirmation();
       this.tg.requestFullscreen();
