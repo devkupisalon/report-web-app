@@ -12,6 +12,9 @@ export default {
       this.tg = window.Telegram.WebApp;
     };
     document.body.appendChild(script);
+    this.tg.Expand();
+    this.tg.enableClosingConfirmation();
+    this.tg.requestFullscreen();
   }
 };
 </script>

@@ -46,14 +46,14 @@ export default {
     }
   },
   computed: {
-    enableConfirm() {
-      this.tg.enableClosingConfirmation();
-      return true;
-    },
-    fullscreen() {
-      this.tg.requestFullscreen();
-      return true;
-    },
+    // enableConfirm() {
+    //   this.tg.enableClosingConfirmation();
+    //   return true;
+    // },
+    // fullscreen() {
+    //   this.tg.requestFullscreen();
+    //   return true;
+    // },
     currentContent() {
       return this.contentData[this.currentIndex];
     },
