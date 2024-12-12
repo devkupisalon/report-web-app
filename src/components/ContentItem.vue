@@ -1,14 +1,14 @@
 <template>
-  <!-- <div @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd"> -->
+  <div @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd">
     <div v-if="contentType === 'Фото'">
       <img :src="contentUrl" alt="Изображение" loading="lazy">
     </div>
-    <div v-else-if="contentType === 'Видео'">
+    <div v-else>
       <iframe max-width="400" min-width="350" height="400" :src="contentUrl" allow="autoplay"></iframe>
     </div>
     <!-- eslint-disable-next-line -->
     <!-- <ImageModal :visible="modalVisible" :imageUrl="contentUrl" @close-modal="modalVisible = false"></ImageModal> -->
-  <!-- </div> -->
+  </div>
 </template>
 
 <script>
@@ -18,8 +18,8 @@ export default {
   data() {
     return {
       modalVisible: false,
-      // touchStartX: 0,
-      // touchEndX: 0
+      touchStartX: 0,
+      touchEndX: 0
     };
   },
   props: {
@@ -39,13 +39,13 @@ export default {
         this.modalVisible = true;
       }
     },
-    // handleTouchEnd() {
-    //   if (this.touchEndX - this.touchStartX > 50) {
-    //     this.$emit('prev');
-    //   } else if (this.touchStartX - this.touchEndX > 50) {
-    //     this.$emit('next');
-    //   }
-    // }
+    handleTouchEnd() {
+      if (this.touchEndX - this.touchStartX > 50) {
+        this.$emit('prev');
+      } else if (this.touchStartX - this.touchEndX > 50) {
+        this.$emit('next');
+      }
+    }
   },
   components: {
     // ImageModal
