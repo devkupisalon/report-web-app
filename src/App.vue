@@ -51,6 +51,7 @@ export default {
       return true;
     },
     fullscreen() {
+      console.log(this.tg);
       this.tg.requestFullscreen();
       return true;
     },
@@ -58,7 +59,11 @@ export default {
       return this.contentData[this.currentIndex];
     },
     contentMarked() {
-      return this.currentContent.accept === "TRUE";
+      if (this.currentContent) {
+        return this.currentContent.accept === "TRUE";
+      } else {
+        return null
+      }
     },
     operatorName() {
       if (Object.keys(this.contentData) > 0) {
