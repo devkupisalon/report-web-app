@@ -165,7 +165,7 @@ export default {
     ContentItem,
     NavigationButtons,
     MarkContentCheckbox,
-    TelegramMiniApp,
+    // TelegramMiniApp,
     SuccessPage
   }
 };
