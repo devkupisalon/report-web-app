@@ -84,7 +84,7 @@ export default {
   methods: {
     nextContent() {
       if (!this.contentMarked && this.comment === "") {
-       alert("Пожалуйста, заполните комментарий или отметьте контент.");
+        alert("Пожалуйста, заполните комментарий или отметьте контент.");
       } else {
         this.currentContent.comment = this.comment;
         this.comment = "";
@@ -145,6 +145,25 @@ export default {
     SuccessPage
   }
 };
+
+if (this.tg.ready()) {
+  this.tg.enableClosingConfirmation();
+  this.tg.requestFullscreen();
+
+  this.tg.onEvent('mainButtonClicked', async () => {
+    this.saveReport();
+  });
+}
+
+if (this.contentChecked === this.total) {
+  this.tg.MainButton.setParams({ has_shine_effect: true, text: 'Отправить отчет' });
+  this.tg.MainButton.show();
+  return true;
+} else {
+  return false;
+}
+
+
 </script>
 
 <style>
