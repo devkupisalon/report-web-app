@@ -10,6 +10,7 @@ export default {
     script.async = true;
     script.onload = () => {
       this.tg = window.Telegram.WebApp;
+      console.log(this.tg);
     };
     document.body.appendChild(script);
   }

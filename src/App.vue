@@ -23,9 +23,6 @@ import MarkContentCheckbox from './components/MarkContentCheckbox.vue';
 import TelegramMiniApp from './components/TelegramMiniApp.vue';
 import SuccessPage from './components/SuccessPage.vue';
 
-this.enableConfirm
-this.fullscreen
-
 export default {
   data() {
     return {
