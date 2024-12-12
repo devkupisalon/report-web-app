@@ -7,12 +7,10 @@
       <iframe max-width="400" min-width="400" height="600" :src="contentUrl" allow="autoplay"></iframe>
     </div>
     <!-- eslint-disable-next-line -->
-    <!-- <ImageModal :visible="modalVisible" :imageUrl="contentUrl" @close-modal="modalVisible = false"></ImageModal> -->
   </div>
 </template>
 
 <script>
-// import ImageModal from './ImageModal.vue';
 
 export default {
   data() {
@@ -46,9 +44,6 @@ export default {
         this.$emit('next');
       }
     }
-  },
-  components: {
-    // ImageModal
   }
 };
 </script>

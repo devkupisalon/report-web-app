@@ -72,6 +72,8 @@ export default {
     const tg = window.Telegram.WebApp;
     this.tg = tg;
 
+    console.log(tg.ready());
+
     tg.onEvent('mainButtonClicked', async () => {
       this.saveReport();
     });
@@ -145,7 +147,6 @@ export default {
     ContentItem,
     NavigationButtons,
     MarkContentCheckbox,
-    // TelegramMiniApp,
     SuccessPage
   }
 };
