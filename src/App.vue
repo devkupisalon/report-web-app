@@ -72,7 +72,7 @@ export default {
     const tg = window.Telegram.WebApp;
     this.tg = tg;
 
-    console.log(tg.ready());
+    console.log(tg);
 
     tg.onEvent('mainButtonClicked', async () => {
       this.saveReport();
