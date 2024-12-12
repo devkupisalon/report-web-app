@@ -12,6 +12,8 @@
       <MarkContentCheckbox :marked="contentMarked" @change="toggleContentMark" :currentIndex="currentIndex"
         :totalContent="total" />
     </div>
+    <div v-if="allContentChecked" showTgMainButton></div>
+    <div v-if="isReady" getFullScreenAndAddConfigrmPopupBeforeExit></div>
   </div>
 </template>
 
@@ -20,7 +22,6 @@
 import ContentItem from './components/ContentItem.vue';
 import NavigationButtons from './components/NavigationButtons.vue';
 import MarkContentCheckbox from './components/MarkContentCheckbox.vue';
-// import TelegramMiniApp from './components/TelegramMiniApp.vue';
 import SuccessPage from './components/SuccessPage.vue';
 
 export default {
@@ -30,7 +31,8 @@ export default {
       comment: '',
       contentData: {},
       contentChecked: 0,
-      reportSent: false
+      reportSent: false,
+      tg: null
     };
   },
   async created() {
@@ -54,59 +56,35 @@ export default {
       }
     },
     operatorName() {
-      if (Object.keys(this.contentData) > 0) {
-        return this.currentContent.name;
-      } else {
-        return null;
-      }
+      return this.currentContent.name;
     },
     total() {
       return Object.keys(this.contentData).length;
     },
-    showTgMainButton() {
-      if (this.contentChecked === this.total) {
-        this.tg.MainButton.setParams({ has_shine_effect: true, text: 'Отправить отчет' });
-        this.tg.MainButton.show();
-        return true;
-      } else {
-        return false;
-      }
+    isReady() {
+      return this.tg.ready();
+    },
+    allContentChecked() {
+      return this.contentChecked === this.total;
     }
   },
   mounted() {
     const tg = window.Telegram.WebApp;
-    console.log(tg);
-    // const script = document.createElement('script');
-    // script.src = 'https://telegram.org/js/telegram-web-app.js';
-    // script.async = true;
-    // script.onload = () => {
-    //   this.tg = window.Telegram.WebApp;
-    // };
-    // document.body.appendChild(script);
-   
-    if (tg.ready()) {
-      tg.enableClosingConfirmation();
-      tg.requestFullscreen();
+    this.tg = tg;
 
-      tg.onEvent('mainButtonClicked', async () => {
-        this.saveReport();
-      });
-    }
-
-    if (this.contentChecked === this.total) {
-      tg.MainButton.setParams({ has_shine_effect: true, text: 'Отправить отчет' });
-      tg.MainButton.show();
-      return true;
-    } else {
-      return false;
-    }
-    // this.$nextTick(() => {
-    //   this.tg.onEvent('mainButtonClicked', async () => {
-    //     this.saveReport();
-    //   });
-    // });
+    tg.onEvent('mainButtonClicked', async () => {
+      this.saveReport();
+    });
   },
   methods: {
+    getFullScreenAndAddConfigrmPopupBeforeExit() {
+      this.tg.enableClosingConfirmation();
+      this.tg.requestFullscreen();
+    },
+    showTgMainButton() {
+      this.tg.MainButton.setParams({ has_shine_effect: true, text: 'Отправить отчет' });
+      this.tg.MainButton.show();
+    },
     nextContent() {
       if (!this.contentMarked && this.comment === "") {
         alert("Пожалуйста, заполните комментарий или отметьте контент.");
