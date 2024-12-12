@@ -38,6 +38,7 @@ export default {
     try {
       const response = await fetch('/get-all-data');
       const { data } = await response.json();
+      console.log(this.tg);
       this.contentData = data;
     } catch (error) {
       console.error('Ошибка при получении данных:', error);
@@ -146,22 +147,22 @@ export default {
   }
 };
 
-if (this.tg.ready()) {
-  this.tg.enableClosingConfirmation();
-  this.tg.requestFullscreen();
+// if (this.tg.ready()) {
+//   this.tg.enableClosingConfirmation();
+//   this.tg.requestFullscreen();
 
-  this.tg.onEvent('mainButtonClicked', async () => {
-    this.saveReport();
-  });
-}
+//   this.tg.onEvent('mainButtonClicked', async () => {
+//     this.saveReport();
+//   });
+// }
 
-if (this.contentChecked === this.total) {
-  this.tg.MainButton.setParams({ has_shine_effect: true, text: 'Отправить отчет' });
-  this.tg.MainButton.show();
-  return true;
-} else {
-  return false;
-}
+// if (this.contentChecked === this.total) {
+//   this.tg.MainButton.setParams({ has_shine_effect: true, text: 'Отправить отчет' });
+//   this.tg.MainButton.show();
+//   return true;
+// } else {
+//   return false;
+// }
 
 
 </script>
