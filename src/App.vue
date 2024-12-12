@@ -11,8 +11,8 @@
       <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
       <MarkContentCheckbox :marked="contentMarked" @change="toggleContentMark" :currentIndex="currentIndex"
         :totalContent="total" />
-      <!-- <enableConfirm/> -->
-      <!-- <fullscreen/> -->
+      <enableConfirm/>
+      <fullscreen/>
     </div>
   </div>
 </template>
@@ -46,14 +46,14 @@ export default {
     }
   },
   computed: {
-    // enableConfirm() {
-    //   this.tg.enableClosingConfirmation();
-    //   return true;
-    // },
-    // fullscreen() {
-    //   this.tg.requestFullscreen();
-    //   return true;
-    // },
+    enableConfirm() {
+      this.tg.enableClosingConfirmation();
+      return true;
+    },
+    fullscreen() {
+      this.tg.requestFullscreen();
+      return true;
+    },
     currentContent() {
       return this.contentData[this.currentIndex];
     },
