@@ -13,7 +13,7 @@
         :totalContent="total" />
     </div>
     <div v-if="allContentChecked" showTgMainButton></div>
-    <div v-if="isReady" getFullScreenAndAddConfigrmPopupBeforeExit></div>
+    <div getFullScreenAndAddConfigrmPopupBeforeExit></div>
   </div>
 </template>
 
@@ -71,8 +71,7 @@ export default {
   mounted() {
     const tg = window.Telegram.WebApp;
     this.tg = tg;
-
-    console.log(tg);
+    this.tg.ready();
 
     tg.onEvent('mainButtonClicked', async () => {
       this.saveReport();
