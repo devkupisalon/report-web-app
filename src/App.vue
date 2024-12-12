@@ -1,19 +1,19 @@
 <template>
   <div>
-      <TelegramMiniApp />
-      <div v-if="reportSent">
-        <SuccessPage />
-      </div>
-      <div v-else>
-        <div id="operator-name">Оператор {{ operatorName }}</div>
-        <ContentItem v-if="currentContent" :content="currentContent" />
-        <NavigationButtons @next="nextContent" @prev="prevContent" />
-        <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
-        <MarkContentCheckbox :marked="contentMarked" @change="toggleContentMark" :currentIndex="currentIndex"
-          :totalContent="total" />
-        <!-- <enableConfirm/> -->
-        <!-- <fullscreen/> -->
-      </div>
+    <TelegramMiniApp />
+    <div v-if="reportSent">
+      <SuccessPage />
+    </div>
+    <div v-else>
+      <div id="operator-name">Оператор {{ operatorName }}</div>
+      <ContentItem v-if="currentContent" :content="currentContent" />
+      <NavigationButtons @next="nextContent" @prev="prevContent" />
+      <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
+      <MarkContentCheckbox :marked="contentMarked" @change="toggleContentMark" :currentIndex="currentIndex"
+        :totalContent="total" />
+      <!-- <enableConfirm/> -->
+      <!-- <fullscreen/> -->
+    </div>
   </div>
 </template>
 
@@ -38,7 +38,7 @@ export default {
   },
   async created() {
     try {
-      const response = await fetch('http://31.129.109.210:8000/get-all-data');
+      const response = await fetch('/get-all-data');
       const { data } = await response.json();
       this.contentData = data;
     } catch (error) {
