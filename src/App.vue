@@ -11,8 +11,8 @@
       <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
       <MarkContentCheckbox :marked="contentMarked" @change="toggleContentMark" :currentIndex="currentIndex"
         :totalContent="total" />
-      <enableConfirm/>
-      <fullscreen/>
+      <enableConfirm />
+      <fullscreen />
     </div>
   </div>
 </template>
@@ -61,7 +61,11 @@ export default {
       return this.currentContent.accept === "TRUE";
     },
     operatorName() {
-      return this.currentContent.name;
+      if (Object.keys(this.contentData) > 0) {
+        return this.currentContent.name;
+      } else {
+        return null;
+      }
     },
     total() {
       return Object.keys(this.contentData).length;
