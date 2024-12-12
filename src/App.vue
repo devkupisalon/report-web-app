@@ -211,7 +211,7 @@ img {
 
 .content {
   font-family: 'Helvetica Neue';
-  display: flex;
+  display: none;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
