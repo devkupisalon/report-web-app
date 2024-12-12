@@ -75,7 +75,7 @@ export default {
     }
   },
   mounted() {
-    if (this.tg.ready()) {
+    if (this.tg?.ready()) {
       this.tg.enableClosingConfirmation();
       this.tg.requestFullscreen();
 
