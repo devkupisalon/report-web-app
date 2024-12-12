@@ -14,6 +14,14 @@ export default {
         this.tg.enableClosingConfirmation();
         this.tg.requestFullscreen();
       }
+
+      if (this.contentChecked === this.total) {
+        this.tg.MainButton.setParams({ has_shine_effect: true, text: 'Отправить отчет' });
+        this.tg.MainButton.show();
+        return true;
+      } else {
+        return false;
+      }
     };
     document.body.appendChild(script);
   }

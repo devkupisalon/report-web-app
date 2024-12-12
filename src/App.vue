@@ -38,21 +38,13 @@ export default {
     try {
       const response = await fetch('/get-all-data');
       const { data } = await response.json();
+      console.log(this.tg);
       this.contentData = data;
     } catch (error) {
       console.error('Ошибка при получении данных:', error);
     }
   },
   computed: {
-    enableConfirm() {
-      this.tg.enableClosingConfirmation();
-      return true;
-    },
-    fullscreen() {
-      console.log(this.tg);
-      this.tg.requestFullscreen();
-      return true;
-    },
     currentContent() {
       return this.contentData[this.currentIndex];
     },
