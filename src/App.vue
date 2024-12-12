@@ -11,8 +11,6 @@
       <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
       <MarkContentCheckbox :marked="contentMarked" @change="toggleContentMark" :currentIndex="currentIndex"
         :totalContent="total" />
-      <enableConfirm />
-      <fullscreen />
     </div>
   </div>
 </template>
@@ -24,6 +22,9 @@ import NavigationButtons from './components/NavigationButtons.vue';
 import MarkContentCheckbox from './components/MarkContentCheckbox.vue';
 import TelegramMiniApp from './components/TelegramMiniApp.vue';
 import SuccessPage from './components/SuccessPage.vue';
+
+this.tg.enableClosingConfirmation();
+this.tg.requestFullscreen();
 
 export default {
   data() {
