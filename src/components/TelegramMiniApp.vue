@@ -13,6 +13,10 @@ export default {
       if (this.tg.ready()) {
         this.tg.enableClosingConfirmation();
         this.tg.requestFullscreen();
+
+        this.tg.onEvent('mainButtonClicked', async () => {
+          this.saveReport();
+        });
       }
 
       if (this.contentChecked === this.total) {
@@ -22,6 +26,7 @@ export default {
       } else {
         return false;
       }
+
     };
     document.body.appendChild(script);
   }

@@ -38,7 +38,6 @@ export default {
     try {
       const response = await fetch('/get-all-data');
       const { data } = await response.json();
-      console.log(this.tg);
       this.contentData = data;
     } catch (error) {
       console.error('Ошибка при получении данных:', error);
@@ -76,16 +75,16 @@ export default {
     }
   },
   mounted() {
-    this.$nextTick(() => {
-      this.tg.onEvent('mainButtonClicked', async () => {
-        this.saveReport();
-      });
-    });
+    // this.$nextTick(() => {
+    //   this.tg.onEvent('mainButtonClicked', async () => {
+    //     this.saveReport();
+    //   });
+    // });
   },
   methods: {
     nextContent() {
       if (!this.contentMarked && this.comment === "") {
-       /*  this.tg.showPopup({ message:  */alert("Пожалуйста, заполните комментарий или отметьте контент.");
+       alert("Пожалуйста, заполните комментарий или отметьте контент.");
       } else {
         this.currentContent.comment = this.comment;
         this.comment = "";
