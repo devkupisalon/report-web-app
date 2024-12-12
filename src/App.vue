@@ -82,7 +82,7 @@ export default {
     //   this.tg = window.Telegram.WebApp;
     // };
     // document.body.appendChild(script);
-
+    console.log(this.tg);
     if (this.tg.ready()) {
       this.tg.enableClosingConfirmation();
       this.tg.requestFullscreen();
