@@ -4,7 +4,7 @@
       <img :src="contentUrl" alt="Изображение" loading="lazy">
     </div>
     <div v-else>
-      <iframe max-width="400" min-width="350" height="400" :src="contentUrl" allow="autoplay"></iframe>
+      <iframe max-width="500" min-width="350" height="700" :src="contentUrl" allow="autoplay"></iframe>
     </div>
     <!-- eslint-disable-next-line -->
     <!-- <ImageModal :visible="modalVisible" :imageUrl="contentUrl" @close-modal="modalVisible = false"></ImageModal> -->
