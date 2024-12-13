@@ -27,9 +27,9 @@ import { ClosingConfirmation, MainButton, useWebAppMainButton } from 'vue-tg';
 
 const { onMainButtonClicked } = useWebAppMainButton();
 
-this.$root.onMainButtonClicked(async () =>
-  await this.saveReport()
-);
+// onMainButtonClicked(async () =>
+//   await this.saveReport()
+// );
 
 export default {
   data() {
@@ -80,7 +80,9 @@ export default {
 
   },
   mounted() {
-    
+    this.$root.onMainButtonClicked(async () => {
+      await this.saveReport();
+    });
   },
   methods: {
     nextContent() {
