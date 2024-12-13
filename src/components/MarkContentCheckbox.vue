@@ -28,7 +28,7 @@ export default {
     },
     methods: {
         toggleContentMark() {
-            this.isChecked = !this.isChecked;
+            this.isChecked = this.marked;
             this.$emit('click', { target: { _modelValue: this.isChecked } });
         }
     }
