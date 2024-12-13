@@ -111,29 +111,27 @@ export default {
       }
     },
     async saveReport() {
-      if (this.contentChecked === this.total) {
-        try {
-          const response = await fetch('/savedata', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ data: this.contentData }),
-          });
-          const { success } = await response.json();
-          if (success) {
-            console.log(`Report successfully saved`);
-            this.reportSent = true;
+      try {
+        const response = await fetch('/savedata', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ data: this.contentData }),
+        });
+        const { success } = await response.json();
+        if (success) {
+          console.log(`Report successfully saved`);
+          this.reportSent = true;
+          setTimeout(() => {
+            this.reportSent = false;
             setTimeout(() => {
-              this.reportSent = false;
-              setTimeout(() => {
 
-              }, 0);
-            }, 2000);
-          }
-        } catch (error) {
-          console.error(`Error while save report: ${error}`);
+            }, 0);
+          }, 2000);
         }
+      } catch (error) {
+        console.error(`Error while save report: ${error}`);
       }
     }
   },
