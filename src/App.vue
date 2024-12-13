@@ -114,7 +114,7 @@ export default {
     async saveReport() {
       try {
         console.log('Start');
-        const response = await fetch('/savedata', {
+        const response = await fetch('/save-data', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
