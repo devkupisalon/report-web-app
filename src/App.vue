@@ -27,8 +27,8 @@ import { ClosingConfirmation, MainButton, useWebAppMainButton } from 'vue-tg';
 
 const { onMainButtonClicked } = useWebAppMainButton();
 
-onMainButtonClicked(() =>
-  this.saveReport()
+onMainButtonClicked(async () =>
+  await this.saveReport()
 );
 
 export default {
@@ -46,7 +46,6 @@ export default {
         false: '❌',
       },
       isChecked: false,
-      // checkedOrCommented: {}
     };
   },
   async created() {
@@ -91,8 +90,6 @@ export default {
         this.comment = this.contentData[this.currentIndex + 1].comment ? this.currentContent.comment : '';
         this.contentMarked = false;
         this.currentIndex = Math.min(this.currentIndex + 1, Object.keys(this.contentData).length - 1);
-        // if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
-        // this.checkedOrCommented[this.currentIndex] = true;
       }
     },
     prevContent() {
@@ -103,16 +100,14 @@ export default {
       if (!this.contentMarked) {
         this.currentContent.accept = "TRUE";
         this.isChecked = true;
-        // if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
       } else {
         this.currentContent.accept = "FALSE";
         this.isChecked = false;
-        // this.contentChecked--;
-        // this.checkedOrCommented[this.currentIndex] = false;
       }
     },
     async saveReport() {
       try {
+        console.log('Start');
         const response = await fetch('/savedata', {
           method: 'POST',
           headers: {
