@@ -86,14 +86,8 @@ export default {
         this.contentMarked = false;
         console.log(this.currentContent);
         this.currentIndex = Math.min(this.currentIndex + 1, Object.keys(this.contentData).length - 1);
-        // if (this.currentIndex < this.contentData.length) {
-        //   this.comment = this.currentContent.comment ? this.currentContent.comment : '';
-        // }
         if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
         this.checkedOrCommented[this.currentIndex] = true;
-        console.log(this.contentChecked);
-        console.log(this.total);
-        console.log(this.contentData);
       }
     },
     prevContent() {
@@ -111,6 +105,7 @@ export default {
         this.currentContent.accept = "FALSE";
         this.isChecked = false;
         this.contentChecked--;
+        this.checkedOrCommented[this.currentIndex] = false;
       }
     },
     async saveReport() {
