@@ -85,7 +85,7 @@ export default {
       } else {
         this.currentContent.comment = this.comment;
         this.comment = "";
-        this.contentMarked = false;
+        this.isChecked = false;
         this.currentIndex = Math.min(this.currentIndex + 1, Object.keys(this.contentData).length - 1);
         if (this.currentIndex < this.contentData.length) {
           this.comment = this.currentContent.comment ? this.currentContent.comment : '';
