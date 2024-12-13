@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button @click="isChecked" class="button-checked">{{ isChecked === true ? this.ok : this.no }} {{ currentIndex
+        <button @click="isChecked" class="button-checked">{{ check[isChecked] }} {{ currentIndex
             + 1
             }}/{{ totalContent }}</button>
     </div>
@@ -16,8 +16,10 @@ export default {
     data() {
         return {
             isChecked: this.marked,
-            ok: '✅',
-            no: '❌'
+            check: {
+                true: '✅',
+                false: '❌'
+            }
         };
     },
     click: {
