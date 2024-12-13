@@ -100,7 +100,7 @@ export default {
       this.comment = this.currentContent.comment ? this.currentContent.comment : '';
     },
     toggleContentMark() {
-      if (this.currentContent.accept !== "TRUE"/* event.target.innerText.includes("❌") */) {
+      if (!this.contentMarked /* event.target.innerText.includes("❌") */) {
         this.currentContent.accept = "TRUE";
         this.isChecked = true;
         this.contentChecked++
@@ -113,7 +113,7 @@ export default {
       }
     },
     async saveReport() {
-      if (this.contentChecked === Object.keys(this.contentData).length) {
+      if (this.contentChecked === this.total) {
         try {
           const response = await fetch('/savedata', {
             method: 'POST',
