@@ -29,7 +29,7 @@ export default {
     methods: {
         toggleCheck() {
             this.isChecked = this.marked;
-            this.$emit('click', this.isChecked);
+            // this.$emit('click', this.isChecked);
         }
     }
 };
