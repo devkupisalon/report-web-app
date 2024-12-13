@@ -86,9 +86,9 @@ export default {
         this.comment = "";
         this.contentMarked = false;
         this.currentIndex = Math.min(this.currentIndex + 1, Object.keys(this.contentData).length - 1);
-        // if (this.currentIndex < this.contentData.length) {
-        //   this.comment = this.currentContent.comment ? this.currentContent.comment : '';
-        // }
+        if (this.currentIndex < this.contentData.length) {
+          this.comment = this.currentContent.comment ? this.currentContent.comment : '';
+        }
         if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
         this.checkedOrCommented[this.currentIndex] = true;
         console.log(this.contentChecked);
