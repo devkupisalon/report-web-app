@@ -82,6 +82,7 @@ export default {
         alert("Пожалуйста, заполните комментарий или отметьте контент.");
       } else {
         this.currentContent.comment = this.comment;
+        console.log(this.currentContent);
         this.comment = "";
         this.contentMarked = false;
         this.currentIndex = Math.min(this.currentIndex + 1, Object.keys(this.contentData).length - 1);
@@ -92,7 +93,6 @@ export default {
         this.checkedOrCommented[this.currentIndex] = true;
         console.log(this.contentChecked);
         console.log(this.total);
-        console.log(this.currentContent);
       }
     },
     prevContent() {
