@@ -92,11 +92,13 @@ export default {
         this.checkedOrCommented[this.currentIndex] = true;
         console.log(this.contentChecked);
         console.log(this.total);
+        console.log(this.currentContent);
       }
     },
     prevContent() {
       this.currentIndex = Math.max(this.currentIndex - 1, 0);
       this.comment = this.currentContent.comment ? this.currentContent.comment : '';
+      console.log(this.currentContent);
     },
     toggleContentMark() {
       if (!this.contentMarked) {
