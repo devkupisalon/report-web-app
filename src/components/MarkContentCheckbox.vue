@@ -1,12 +1,11 @@
-<!-- MarkContentCheckbox.vue -->
-
 <template>
     <div>
         <!-- <input type="checkbox" v-model="isChecked" /> -->
         <!-- <label> Отметить контент</label>&nbsp; -->
         <!-- <span>{{ currentIndex + 1 }}/{{ totalContent }}</span> -->
-            <button @click="isChecked" class="button-checked">{{ isChecked === "TRUE" ? this.ok : this.no }} {{ currentIndex + 1
-                }}/{{ totalContent }}</button>
+        <button @click="isChecked" class="button-checked">{{ isChecked === true ? this.ok : this.no }} {{ currentIndex
+            + 1
+            }}/{{ totalContent }}</button>
     </div>
 </template>
 
@@ -19,7 +18,9 @@ export default {
     },
     data() {
         return {
-            isChecked: this.marked
+            isChecked: this.marked,
+            ok: '✅',
+            no: '❌'
         };
     },
     watch: {

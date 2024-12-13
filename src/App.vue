@@ -1,19 +1,18 @@
 <template>
   <div>
-    <!-- <TelegramMiniApp /> -->
     <div v-if="reportSent">
       <SuccessPage />
     </div>
     <div v-else>
-      <!-- <div v-if="contentData !== {}" id="operator-name">Оператор {{ operatorName }}</div> -->
       <ContentItem v-if="currentContent" :content="currentContent" />
       <NavigationButtons @next="nextContent" @prev="prevContent" />
       <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
       <MarkContentCheckbox :marked="contentMarked" @change="toggleContentMark" :currentIndex="currentIndex"
         :totalContent="total" />
+      <MainButton v-if="allContentChecked" :has_shine_effect="true" :showMainButton="true"
+        :showMainButtonProgress="true" :tip="text" @click="saveReport" />
+      <ClosingConfirmation />
     </div>
-    <div v-if="allContentChecked" showTgMainButton></div>
-    <div getFullScreenAndAddConfigrmPopupBeforeExit></div>
   </div>
 </template>
 
@@ -23,6 +22,13 @@ import ContentItem from './components/ContentItem.vue';
 import NavigationButtons from './components/NavigationButtons.vue';
 import MarkContentCheckbox from './components/MarkContentCheckbox.vue';
 import SuccessPage from './components/SuccessPage.vue';
+import { ClosingConfirmation, MainButton, useWebAppMainButton } from 'vue-tg';
+
+const { onMainButtonClicked } = useWebAppMainButton;
+
+onMainButtonClicked(() =>
+  this.saveReport
+);
 
 export default {
   data() {
@@ -32,9 +38,7 @@ export default {
       contentData: {},
       contentChecked: 0,
       reportSent: false,
-      tg: null,
-      ok: '✅',
-      no: '❌'
+      text: 'Отправить отчет',
     };
   },
   async created() {
@@ -53,9 +57,6 @@ export default {
     contentMarked() {
       return this.currentContent.accept === "TRUE";
     },
-    // operatorName() {
-    //   return this.currentContent.name;
-    // },
     total() {
       return Object.keys(this.contentData).length;
     },
@@ -64,24 +65,8 @@ export default {
     }
   },
   mounted() {
-    const tg = window.Telegram.WebApp;
-    this.tg = tg;
-    this.tg.ready();
-
-    tg.onEvent('mainButtonClicked', async () => {
-      this.saveReport();
-    });
   },
   methods: {
-    getFullScreenAndAddConfigrmPopupBeforeExit() {
-      console.log("test")
-      this.tg.enableClosingConfirmation();
-      this.tg.requestFullscreen();
-    },
-    showTgMainButton() {
-      this.tg.MainButton.setParams({ has_shine_effect: true, text: 'Отправить отчет' });
-      this.tg.MainButton.show();
-    },
     nextContent() {
       if (!this.contentMarked && this.comment === "") {
         alert("Пожалуйста, заполните комментарий или отметьте контент.");
@@ -141,7 +126,9 @@ export default {
     ContentItem,
     NavigationButtons,
     MarkContentCheckbox,
-    SuccessPage
+    SuccessPage,
+    MainButton,
+    ClosingConfirmation
   }
 };
 </script>
@@ -170,17 +157,14 @@ export default {
 
 #operator-name,
 .button-checked {
-  /* position: sticky; */
-  /* top: 0; */
+  margin-top: 10px;
   padding: 10px;
   width: 100%;
-  margin-bottom: 5px;
   border-radius: 10px;
   text-align: center;
   box-sizing: border-box;
   background-color: var(--tg-theme-button-color);
   color: var(--tg-theme-button-text-color);
-  /* z-index: 1000; */
 }
 
 .button {
