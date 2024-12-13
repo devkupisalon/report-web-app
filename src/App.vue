@@ -24,10 +24,10 @@ import MarkContentCheckbox from './components/MarkContentCheckbox.vue';
 import SuccessPage from './components/SuccessPage.vue';
 import { ClosingConfirmation, MainButton, useWebAppMainButton } from 'vue-tg';
 
-const { onMainButtonClicked } = useWebAppMainButton;
+const { onMainButtonClicked } = useWebAppMainButton();
 
 onMainButtonClicked(() =>
-  this.saveReport
+  this.saveReport()
 );
 
 export default {
