@@ -99,19 +99,14 @@ export default {
       this.currentIndex = Math.max(this.currentIndex - 1, 0);
       this.comment = this.currentContent.comment ? this.currentContent.comment : '';
     },
-    toggleContentMark(event) {
-      console.log('Кнопка нажата');
-      console.log(event.target);
-      if (!this.contentMarked /* event.target.innerText.includes("❌") */) {
+    toggleContentMark() {
+      if (!this.contentMarked) {
         this.currentContent.accept = "TRUE";
         this.isChecked = true;
-        this.contentChecked++
-        return;
       } else {
         this.currentContent.accept = "FALSE";
         this.isChecked = false;
         this.contentChecked--;
-        return;
       }
     },
     async saveReport() {
