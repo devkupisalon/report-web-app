@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button @click="toggleChecked" class="button-checked">{{ check[isChecked] }} {{ currentIndex + 1 }}/{{
+        <button @click="toggleMark" class="button-checked">{{ check[isChecked] }} &nbsp;&nbsp; {{ currentIndex + 1 }}/{{
             totalContent }}</button>
     </div>
 </template>
@@ -27,8 +27,9 @@ export default {
         }
     },
     methods: {
-        toggleChecked() {
+        toggleMark() {
             this.isChecked = this.marked;
+            this.$emit('click', this.isChecked);
         }
     }
 };
