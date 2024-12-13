@@ -2,9 +2,13 @@
 
 <template>
     <div>
-        <input type="checkbox" v-model="isChecked" />
-        <label> Отметить контент</label>&nbsp;
-        <span>{{ currentIndex + 1 }}/{{ totalContent }}</span>
+        <!-- <input type="checkbox" v-model="isChecked" /> -->
+        <!-- <label> Отметить контент</label>&nbsp; -->
+        <!-- <span>{{ currentIndex + 1 }}/{{ totalContent }}</span> -->
+        <div class="button-checked">
+            <button @click="isChecked" class="button">{{ isChecked === "TRUE" ? this.ok : this.no }} {{ currentIndex + 1
+                }}/{{ totalContent }}</button>
+        </div>
     </div>
 </template>
 
@@ -21,7 +25,7 @@ export default {
         };
     },
     watch: {
-        marked: function(newValue) {
+        marked: function (newValue) {
             this.isChecked = newValue;
         }
     }

@@ -5,7 +5,7 @@
       <SuccessPage />
     </div>
     <div v-else>
-      <div v-if="contentData !== {}" id="operator-name">Оператор {{ operatorName }}</div>
+      <!-- <div v-if="contentData !== {}" id="operator-name">Оператор {{ operatorName }}</div> -->
       <ContentItem v-if="currentContent" :content="currentContent" />
       <NavigationButtons @next="nextContent" @prev="prevContent" />
       <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
@@ -32,7 +32,9 @@ export default {
       contentData: {},
       contentChecked: 0,
       reportSent: false,
-      tg: null
+      tg: null,
+      ok: '✅',
+      no: '❌'
     };
   },
   async created() {
@@ -51,9 +53,9 @@ export default {
     contentMarked() {
       return this.currentContent.accept === "TRUE";
     },
-    operatorName() {
-      return this.currentContent.name;
-    },
+    // operatorName() {
+    //   return this.currentContent.name;
+    // },
     total() {
       return Object.keys(this.contentData).length;
     },
@@ -146,7 +148,6 @@ export default {
 
 <style>
 #app {
-  position: fixed;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   justify-items: center;
   justify-content: center;
@@ -190,9 +191,10 @@ img {
   border-radius: 10px;
 }
 
-#operator-name {
-  position: sticky;
-  top: 0;
+#operator-name,
+.button-checked {
+  /* position: sticky; */
+  /* top: 0; */
   padding: 10px;
   width: 100%;
   margin-bottom: 5px;
@@ -201,7 +203,7 @@ img {
   box-sizing: border-box;
   background-color: var(--tg-theme-button-color);
   color: var(--tg-theme-button-text-color);
-  z-index: 1000;
+  /* z-index: 1000; */
 }
 
 .content {
