@@ -8,11 +8,11 @@
       <ContentItem v-if="currentContent" :content="currentContent" />
       <NavigationButtons @next="nextContent" @prev="prevContent" />
       <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
-      <!-- <MarkContentCheckbox @check="toggleContentMark" :marked="contentMarked" :currentIndex="currentIndex"
-        :totalContent="total" /> -->
-      <button @click="toggleContentMark" class="button-checked">{{ check[isChecked] }} &nbsp;&nbsp; {{ currentIndex +
+      <MarkContentCheckbox @check="toggleContentMark" :marked="contentMarked" :currentIndex="currentIndex"
+        :totalContent="total" />
+      <!-- <button @click="toggleContentMark" class="button-checked">{{ check[isChecked] }} &nbsp;&nbsp; {{ currentIndex +
         1 }}/{{
-          total }}</button>
+          total }}</button> -->
       <MainButton v-if="allContentChecked" :has_shine_effect="true" :showMainButton="true" :is_progress_visible="true"
         :text="text" />
       <ClosingConfirmation />
@@ -24,7 +24,7 @@
 
 import ContentItem from './components/ContentItem.vue';
 import NavigationButtons from './components/NavigationButtons.vue';
-// import MarkContentCheckbox from './components/MarkContentCheckbox.vue';
+import MarkContentCheckbox from './components/MarkContentCheckbox.vue';
 import SuccessPage from './components/SuccessPage.vue';
 import { ClosingConfirmation, MainButton, useWebAppMainButton } from 'vue-tg';
 
@@ -85,7 +85,7 @@ export default {
       } else {
         this.currentContent.comment = this.comment;
         this.comment = "";
-        this.isChecked = false;
+        this.contentMarked = false;
         this.currentIndex = Math.min(this.currentIndex + 1, Object.keys(this.contentData).length - 1);
         if (this.currentIndex < this.contentData.length) {
           this.comment = this.currentContent.comment ? this.currentContent.comment : '';
@@ -98,6 +98,7 @@ export default {
     prevContent() {
       this.currentIndex = Math.max(this.currentIndex - 1, 0);
       this.comment = this.currentContent.comment ? this.currentContent.comment : '';
+
     },
     toggleContentMark() {
       if (!this.contentMarked) {
@@ -139,7 +140,7 @@ export default {
   components: {
     ContentItem,
     NavigationButtons,
-    // MarkContentCheckbox,
+    MarkContentCheckbox,
     SuccessPage,
     MainButton,
     ClosingConfirmation
