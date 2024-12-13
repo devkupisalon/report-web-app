@@ -158,7 +158,9 @@ export default {
   height: 100vh;
   margin-top: 10px;
   padding: 5px;
-  max-width: fit-content;
+  width: fit-content;
+  max-width: 400px;
+  overflow: hidden;
 }
 
 .button-container {
