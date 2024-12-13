@@ -44,9 +44,9 @@ export default {
       check: {
         true: '✅',
         false: '❌',
-        checkedOrCommented: {}
       },
-      isChecked: false
+      isChecked: false,
+      checkedOrCommented: {}
     };
   },
   async created() {
@@ -88,7 +88,8 @@ export default {
         if (this.currentIndex < this.contentData.length) {
           this.comment = this.currentContent.comment ? this.currentContent.comment : '';
         }
-        this.contentChecked++;
+        if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
+        this.checkedOrCommented[this.currentIndex] = true;
         console.log(this.contentChecked);
         console.log(this.total);
       }
