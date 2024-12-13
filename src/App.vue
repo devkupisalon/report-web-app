@@ -12,7 +12,7 @@
         :totalContent="total" /> -->
       <button @click="toggleContentMark" class="button-checked">{{ check[isChecked] }} &nbsp;&nbsp; {{ currentIndex +
         1 }}/{{
-          totalContent }}</button>
+          total }}</button>
       <MainButton v-if="allContentChecked" :has_shine_effect="true" :showMainButton="true" :is_progress_visible="true"
         :text="text" />
       <ClosingConfirmation />
