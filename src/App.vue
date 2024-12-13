@@ -146,14 +146,14 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   justify-items: center;
   justify-content: center;
   text-align: center;
   margin: 0 auto;
   color: var(--tg-theme-text-color);
   background: var(--tg-theme-bg-color);
-  height: 300px;
+  height: 100vh;
   margin-top: 10px;
   padding: 5px;
   max-width: fit-content;
@@ -162,10 +162,6 @@ export default {
 .button-container {
   display: flex;
   justify-content: space-between;
-}
-
-#video-frame {
-  display: none;
 }
 
 .button {
