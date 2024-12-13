@@ -10,7 +10,7 @@
       <MarkContentCheckbox :marked="contentMarked" @change="toggleContentMark" :currentIndex="currentIndex"
         :totalContent="total" />
       <MainButton v-if="allContentChecked" :has_shine_effect="true" :showMainButton="true"
-        :showMainButtonProgress="true" :tip="text" @click="saveReport" />
+        :showProgress="true" :text="text" @click="saveReport" />
       <ClosingConfirmation />
     </div>
   </div>
