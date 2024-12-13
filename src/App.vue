@@ -71,8 +71,15 @@ export default {
       return Object.keys(this.contentData).length;
     },
     allContentChecked() {
-      return this.contentChecked === this.total;
-    }
+      const allContentIsChecked = Object.values(this.contentData).reduce((acc, { accept, comment }, i) => {
+        acc[i] = (accept === "TRUE" && comment === '') || (accept === "FALSE" && comment !== '')
+        return acc;
+      }, {});
+
+      return Object.values(allContentIsChecked).every(v => v === true) ? true : false
+      // return this.contentChecked === this.total;
+    },
+
   },
   mounted() {
   },
@@ -92,21 +99,17 @@ export default {
     prevContent() {
       this.currentIndex = Math.max(this.currentIndex - 1, 0);
       this.comment = this.currentContent.comment ? this.currentContent.comment : '';
-      console.log(this.currentContent);
-      console.log(this.contentData);
     },
     toggleContentMark() {
       if (!this.contentMarked) {
         this.currentContent.accept = "TRUE";
         this.isChecked = true;
         if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
-        console.log(this.contentData);
       } else {
         this.currentContent.accept = "FALSE";
         this.isChecked = false;
         this.contentChecked--;
         this.checkedOrCommented[this.currentIndex] = false;
-        console.log(this.contentData);
       }
     },
     async saveReport() {
