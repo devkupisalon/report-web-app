@@ -168,6 +168,21 @@ export default {
   justify-content: space-between;
 }
 
+#operator-name,
+.button-checked {
+  /* position: sticky; */
+  /* top: 0; */
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: var(--tg-theme-button-color);
+  color: var(--tg-theme-button-text-color);
+  /* z-index: 1000; */
+}
+
 .button {
   width: 49%;
   padding: 10px;
@@ -191,21 +206,6 @@ img {
   width: 100%;
   height: 70vh;
   border-radius: 10px;
-}
-
-#operator-name,
-.button-checked {
-  /* position: sticky; */
-  /* top: 0; */
-  padding: 10px;
-  width: 100%;
-  margin-bottom: 5px;
-  border-radius: 10px;
-  text-align: center;
-  box-sizing: border-box;
-  background-color: var(--tg-theme-button-color);
-  color: var(--tg-theme-button-text-color);
-  /* z-index: 1000; */
 }
 
 .content {
