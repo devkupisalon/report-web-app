@@ -49,7 +49,7 @@ export default {
       return this.contentData[this.currentIndex];
     },
     contentMarked() {
-        return this.currentContent.accept === "TRUE";
+      return this.currentContent.accept === "TRUE";
     },
     operatorName() {
       return this.currentContent.name;
@@ -146,7 +146,7 @@ export default {
 
 <style>
 #app {
-  position:static;
+  position: fixed;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   justify-items: center;
   justify-content: center;
