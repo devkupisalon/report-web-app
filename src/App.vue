@@ -82,13 +82,13 @@ export default {
         alert("Пожалуйста, заполните комментарий или отметьте контент.");
       } else {
         this.currentContent.comment = this.comment;
-        console.log(this.currentContent);
         this.comment = "";
         this.contentMarked = false;
+        console.log(this.currentContent);
         this.currentIndex = Math.min(this.currentIndex + 1, Object.keys(this.contentData).length - 1);
-        if (this.currentIndex < this.contentData.length) {
-          this.comment = this.currentContent.comment ? this.currentContent.comment : '';
-        }
+        // if (this.currentIndex < this.contentData.length) {
+        //   this.comment = this.currentContent.comment ? this.currentContent.comment : '';
+        // }
         if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
         this.checkedOrCommented[this.currentIndex] = true;
         console.log(this.contentChecked);
