@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     nextContent() {
-      if (!this.contentMarked && this.currentContent.comment === "") {
+      if (!this.contentMarked && this.comment === "") {
         alert("Пожалуйста, заполните комментарий или отметьте контент.");
       } else {
         this.currentContent.comment = this.comment;
