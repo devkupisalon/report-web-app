@@ -10,8 +10,8 @@
       <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
       <MarkContentCheckbox @check="toggleContentMark" :marked="contentMarked" :currentIndex="currentIndex"
         :totalContent="total" />
-      <MainButton v-if="allContentChecked" :has_shine_effect="true" :showMainButton="true" :is_progress_visible="true"
-        :text="text" />
+      <MainButton @click="saveReport()" v-if="allContentChecked" :has_shine_effect="true" :showMainButton="true"
+        :is_progress_visible="true" :text="text" />
       <ClosingConfirmation />
     </div>
   </div>
