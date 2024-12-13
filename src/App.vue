@@ -27,9 +27,9 @@ import { ClosingConfirmation, MainButton, useWebAppMainButton } from 'vue-tg';
 
 const { onMainButtonClicked } = useWebAppMainButton();
 
-onMainButtonClicked(async () =>
-  await this.saveReport()
-);
+// onMainButtonClicked(async () =>
+//   await this.saveReport()
+// );
 
 export default {
   data() {
@@ -79,11 +79,14 @@ export default {
     },
 
   },
-  // mounted() {
-  //   this.$root.onMainButtonClicked(async () => {
-  //     await this.saveReport();
-  //   });
-  // },
+  mounted() {
+    if (this.contentData && this.contentData[this.currentIndex]) {
+      this.comment = this.contentData[this.currentIndex].comment || '';
+      onMainButtonClicked(async () => {
+        await this.saveReport();
+      });
+    }
+  },
   methods: {
     nextContent() {
       if (!this.contentMarked && this.comment === "") {
