@@ -88,8 +88,7 @@ export default {
         if (this.currentIndex < this.contentData.length) {
           this.comment = this.currentContent.comment ? this.currentContent.comment : '';
         }
-        if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
-        this.checkedOrCommented[this.currentIndex] = true;
+        this.contentChecked++;
         console.log(this.contentChecked);
         console.log(this.total);
       }
