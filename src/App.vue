@@ -48,7 +48,8 @@ export default {
         true: '✅',
         false: '❌'
       },
-      isChecked: false
+      isChecked: false,
+      alreadyCheckecdOrCommented: {}
     };
   },
   async created() {
@@ -90,7 +91,8 @@ export default {
         if (this.currentIndex < this.contentData.length) {
           this.comment = this.currentContent.comment ? this.currentContent.comment : '';
         }
-        this.contentChecked++
+        this.alreadyCheckecdOrCommented[this.currentIndex] = true;
+        if (!this.alreadyCheckecdOrCommented[this.currentIndex]) this.contentChecked++
         console.log(this.contentChecked);
         console.log(this.total);
       }
