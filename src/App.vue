@@ -49,20 +49,13 @@ export default {
       return this.contentData[this.currentIndex];
     },
     contentMarked() {
-      if (this.currentContent) {
         return this.currentContent.accept === "TRUE";
-      } else {
-        return null
-      }
     },
     operatorName() {
       return this.currentContent.name;
     },
     total() {
       return Object.keys(this.contentData).length;
-    },
-    isReady() {
-      return this.tg.ready();
     },
     allContentChecked() {
       return this.contentChecked === this.total;
