@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
         <button @click="$emit('check')" class="button-checked">{{ check[isChecked] }} &nbsp;&nbsp; {{ currentIndex +
             1 }}/{{
@@ -34,4 +34,4 @@ export default {
         }
     }
 };
-</script>
+</script> -->

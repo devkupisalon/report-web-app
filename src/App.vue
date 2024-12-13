@@ -113,7 +113,7 @@ export default {
     async saveReport() {
       if (this.contentChecked === Object.keys(this.contentData).length) {
         try {
-          const response = await fetch('http://31.129.109.210:8000/savedata', {
+          const response = await fetch('/savedata', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
