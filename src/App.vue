@@ -82,7 +82,7 @@ export default {
         alert("Пожалуйста, заполните комментарий или отметьте контент.");
       } else {
         this.currentContent.comment = this.comment;
-        this.comment = this.currentContent.comment ? this.currentContent.comment : '';
+        this.comment = this.contentData[this.currentIndex + 1].comment ? this.currentContent.comment : '';
         this.contentMarked = false;
         this.currentIndex = Math.min(this.currentIndex + 1, Object.keys(this.contentData).length - 1);
         if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
