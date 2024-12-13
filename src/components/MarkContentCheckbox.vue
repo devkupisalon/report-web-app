@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button @click="marked" class="button-checked">{{ check[isChecked] }} &nbsp;&nbsp; {{ currentIndex + 1 }}/{{
+        <button @click="toggleContentMark" class="button-checked">{{ check[isChecked] }} &nbsp;&nbsp; {{ currentIndex + 1 }}/{{
             totalContent }}</button>
     </div>
 </template>
@@ -24,6 +24,12 @@ export default {
     watch: {
         marked: function (newValue) {
             this.isChecked = newValue;
+        }
+    },
+    methods: {
+        toggleContentMark() {
+            this.isChecked = !this.isChecked;
+            this.$emit('click', { target: { _modelValue: this.isChecked } });
         }
     }
 };
