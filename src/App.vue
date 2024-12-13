@@ -100,11 +100,13 @@ export default {
         this.currentContent.accept = "TRUE";
         this.isChecked = true;
         if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
+        console.log(this.contentData);
       } else {
         this.currentContent.accept = "FALSE";
         this.isChecked = false;
         this.contentChecked--;
         this.checkedOrCommented[this.currentIndex] = false;
+        console.log(this.contentData);
       }
     },
     async saveReport() {
