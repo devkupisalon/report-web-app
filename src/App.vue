@@ -104,6 +104,7 @@ export default {
       if (!this.contentMarked) {
         this.currentContent.accept = "TRUE";
         this.isChecked = true;
+        if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
       } else {
         this.currentContent.accept = "FALSE";
         this.isChecked = false;
