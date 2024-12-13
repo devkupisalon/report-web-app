@@ -43,7 +43,8 @@ export default {
       loading: true,
       check: {
         true: '✅',
-        false: '❌'
+        false: '❌',
+        checkedOrCommented: {}
       },
       isChecked: false
     };
@@ -87,7 +88,8 @@ export default {
         if (this.currentIndex < this.contentData.length) {
           this.comment = this.currentContent.comment ? this.currentContent.comment : '';
         }
-        this.contentChecked++
+        if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
+        this.checkedOrCommented[this.currentIndex] = true;
         console.log(this.contentChecked);
         console.log(this.total);
       }
@@ -95,7 +97,6 @@ export default {
     prevContent() {
       this.currentIndex = Math.max(this.currentIndex - 1, 0);
       this.comment = this.currentContent.comment ? this.currentContent.comment : '';
-      this.contentChecked--
     },
     toggleContentMark() {
       if (!this.contentMarked) {
