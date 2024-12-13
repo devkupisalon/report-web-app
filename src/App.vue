@@ -10,9 +10,6 @@
       <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
       <MarkContentCheckbox @check="toggleContentMark" :marked="contentMarked" :currentIndex="currentIndex"
         :totalContent="total" />
-      <!-- <button @click="toggleContentMark" class="button-checked">{{ check[isChecked] }} &nbsp;&nbsp; {{ currentIndex +
-        1 }}/{{
-          total }}</button> -->
       <MainButton v-if="allContentChecked" :has_shine_effect="true" :showMainButton="true" :is_progress_visible="true"
         :text="text" />
       <ClosingConfirmation />
@@ -48,8 +45,7 @@ export default {
         true: '✅',
         false: '❌'
       },
-      isChecked: false,
-      alreadyCheckecdOrCommented: {}
+      isChecked: false
     };
   },
   async created() {
@@ -91,8 +87,7 @@ export default {
         if (this.currentIndex < this.contentData.length) {
           this.comment = this.currentContent.comment ? this.currentContent.comment : '';
         }
-        this.alreadyCheckecdOrCommented[this.currentIndex] = true;
-        if (!this.alreadyCheckecdOrCommented[this.currentIndex]) this.contentChecked++
+        this.contentChecked++
         console.log(this.contentChecked);
         console.log(this.total);
       }
@@ -100,7 +95,7 @@ export default {
     prevContent() {
       this.currentIndex = Math.max(this.currentIndex - 1, 0);
       this.comment = this.currentContent.comment ? this.currentContent.comment : '';
-
+      this.contentChecked--
     },
     toggleContentMark() {
       if (!this.contentMarked) {
