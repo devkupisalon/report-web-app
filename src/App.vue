@@ -81,6 +81,7 @@ export default {
       if (!this.contentMarked && this.comment === "") {
         alert("Пожалуйста, заполните комментарий или отметьте контент.");
       } else {
+        console.log(this.currentContent.comment);
         this.currentContent.comment = this.comment;
         this.comment = "";
         this.contentMarked = false;
@@ -95,6 +96,7 @@ export default {
       }
     },
     prevContent() {
+      console.log(this.currentContent.comment);
       this.currentIndex = Math.max(this.currentIndex - 1, 0);
       this.comment = this.currentContent.comment ? this.currentContent.comment : '';
     },
