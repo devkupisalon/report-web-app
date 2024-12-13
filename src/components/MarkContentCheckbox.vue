@@ -30,7 +30,7 @@ export default {
     methods: {
         toggleContentMark() {
             this.isChecked = this.marked;
-            this.$emit('click', this.isChecked);
+            this.$emit('check', this.isChecked);
         }
     }
 };
