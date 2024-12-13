@@ -25,12 +25,6 @@ export default {
         marked: function (newValue) {
             this.isChecked = newValue;
         }
-    },
-    methods: {
-        toggleCheck() {
-            this.isChecked = this.marked;
-            // this.$emit('click', this.isChecked);
-        }
     }
 };
 </script>

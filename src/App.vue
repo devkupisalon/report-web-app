@@ -117,7 +117,7 @@ export default {
             setTimeout(() => {
               this.reportSent = false;
               setTimeout(() => {
-                this.tg.close();
+                
               }, 0);
             }, 2000);
           }
