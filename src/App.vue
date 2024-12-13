@@ -4,12 +4,13 @@
       <SuccessPage />
     </div>
     <div v-else>
+      <div v-if="loading">Загрузка...</div>
       <ContentItem v-if="currentContent" :content="currentContent" />
       <NavigationButtons @next="nextContent" @prev="prevContent" />
       <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
       <MarkContentCheckbox @click="toggleContentMark" :marked="contentMarked" :currentIndex="currentIndex"
         :totalContent="total" />
-      <MainButton v-if="allContentChecked" :has_shine_effect="true" :showMainButton="true" :showProgress="true"
+      <MainButton v-if="allContentChecked" :has_shine_effect="true" :showMainButton="true" :is_progress_visible="true"
         :text="text" />
       <ClosingConfirmation />
     </div>
@@ -23,6 +24,7 @@ import NavigationButtons from './components/NavigationButtons.vue';
 import MarkContentCheckbox from './components/MarkContentCheckbox.vue';
 import SuccessPage from './components/SuccessPage.vue';
 import { ClosingConfirmation, MainButton, useWebAppMainButton } from 'vue-tg';
+import { truncate } from 'fs/promises';
 
 const { onMainButtonClicked } = useWebAppMainButton();
 
@@ -39,13 +41,16 @@ export default {
       contentChecked: 0,
       reportSent: false,
       text: 'Отправить отчет',
+      loading: true
     };
   },
   async created() {
     try {
+      this.loading = true;
       const response = await fetch('/get-all-data');
       const { data } = await response.json();
       this.contentData = data;
+      this.loading = false;
     } catch (error) {
       console.error('Ошибка при получении данных:', error);
     }
