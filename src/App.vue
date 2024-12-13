@@ -104,10 +104,12 @@ export default {
         this.currentContent.accept = "TRUE";
         this.isChecked = true;
         this.contentChecked++
+        return;
       } else {
         this.currentContent.accept = "FALSE";
         this.isChecked = false;
         this.contentChecked--;
+        return;
       }
     },
     async saveReport() {
