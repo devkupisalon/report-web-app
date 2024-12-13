@@ -46,7 +46,7 @@ export default {
         false: '❌',
       },
       isChecked: false,
-      checkedOrCommented: {}
+      // checkedOrCommented: {}
     };
   },
   async created() {
@@ -77,7 +77,6 @@ export default {
       }, {});
 
       return Object.values(allContentIsChecked).every(v => v === true) ? true : false
-      // return this.contentChecked === this.total;
     },
 
   },
@@ -92,8 +91,8 @@ export default {
         this.comment = this.contentData[this.currentIndex + 1].comment ? this.currentContent.comment : '';
         this.contentMarked = false;
         this.currentIndex = Math.min(this.currentIndex + 1, Object.keys(this.contentData).length - 1);
-        if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
-        this.checkedOrCommented[this.currentIndex] = true;
+        // if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
+        // this.checkedOrCommented[this.currentIndex] = true;
       }
     },
     prevContent() {
@@ -104,12 +103,12 @@ export default {
       if (!this.contentMarked) {
         this.currentContent.accept = "TRUE";
         this.isChecked = true;
-        if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
+        // if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
       } else {
         this.currentContent.accept = "FALSE";
         this.isChecked = false;
-        this.contentChecked--;
-        this.checkedOrCommented[this.currentIndex] = false;
+        // this.contentChecked--;
+        // this.checkedOrCommented[this.currentIndex] = false;
       }
     },
     async saveReport() {
