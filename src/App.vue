@@ -146,7 +146,8 @@ export default {
 
 <style>
 #app {
-  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
+  position:static;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   justify-items: center;
   justify-content: center;
   text-align: center;
