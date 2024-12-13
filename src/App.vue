@@ -84,7 +84,6 @@ export default {
         this.currentContent.comment = this.comment;
         this.comment = "";
         this.contentMarked = false;
-        console.log(this.currentContent);
         this.currentIndex = Math.min(this.currentIndex + 1, Object.keys(this.contentData).length - 1);
         if (!this.checkedOrCommented[this.currentIndex]) this.contentChecked++;
         this.checkedOrCommented[this.currentIndex] = true;
@@ -92,7 +91,6 @@ export default {
     },
     prevContent() {
       this.currentIndex = Math.max(this.currentIndex - 1, 0);
-      this.currentContent.comment = this.comment;
       this.comment = this.currentContent.comment ? this.currentContent.comment : '';
       console.log(this.currentContent);
       console.log(this.contentData);
