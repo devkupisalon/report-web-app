@@ -4,8 +4,7 @@
       <img :src="contentUrl" alt="Изображение" loading="lazy">
     </div>
     <div v-else>
-      <iframe id="video-frame" max-width="400" min-width="400" height="600" :src="contentUrl" allow="autoplay"
-        :class="{ 'invisible': contentType === 'Фото' }"></iframe>
+      <iframe id="video-frame" max-width="400" min-width="400" height="400" :src="contentUrl" allow="autoplay"></iframe>
     </div>
     <!-- eslint-disable-next-line -->
   </div>
