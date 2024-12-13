@@ -83,6 +83,8 @@ export default {
           this.comment = this.currentContent.comment ? this.currentContent.comment : '';
         }
         this.contentChecked++
+        console.log(this.contentChecked);
+        console.log(this.total);
       }
     },
     prevContent() {
