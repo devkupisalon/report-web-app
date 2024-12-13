@@ -7,10 +7,10 @@
       <ContentItem v-if="currentContent" :content="currentContent" />
       <NavigationButtons @next="nextContent" @prev="prevContent" />
       <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
-      <MarkContentCheckbox :marked="contentMarked" @click="toggleContentMark" :currentIndex="currentIndex"
+      <MarkContentCheckbox @click="toggleContentMark" :marked="contentMarked" :currentIndex="currentIndex"
         :totalContent="total" />
-      <MainButton v-if="allContentChecked" :has_shine_effect="true" :showMainButton="true"
-        :showProgress="true" :text="text" @click="saveReport" />
+      <MainButton v-if="allContentChecked" :has_shine_effect="true" :showMainButton="true" :showProgress="true"
+        :text="text" />
       <ClosingConfirmation />
     </div>
   </div>
