@@ -91,8 +91,8 @@ export default {
       this.comment = this.currentContent.comment ? this.currentContent.comment : '';
     },
     toggleContentMark(event) {
-      console.log(event.target.includes("❌"));
-      if (event.target.includes("❌")) {
+      console.log(event);
+      if (event.target) {
         this.currentContent.accept = "TRUE";
         this.contentChecked++
       } else {
