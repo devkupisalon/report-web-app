@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button @click="toggleCheck" class="button-checked">{{ check[isChecked] }} &nbsp;&nbsp; {{ currentIndex + 1 }}/{{
+        <button @click="marked" class="button-checked">{{ check[isChecked] }} &nbsp;&nbsp; {{ currentIndex + 1 }}/{{
             totalContent }}</button>
     </div>
 </template>
