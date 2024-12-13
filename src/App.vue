@@ -92,7 +92,7 @@ export default {
       this.comment = this.currentContent.comment ? this.currentContent.comment : '';
     },
     toggleContentMark(event) {
-      if (event.target.innerText.includes("❌")) {
+      if (event.target._modelValue/* innerText.includes("❌") */) {
         this.currentContent.accept = "TRUE";
         this.contentChecked++
       } else {
@@ -117,7 +117,7 @@ export default {
             setTimeout(() => {
               this.reportSent = false;
               setTimeout(() => {
-                
+
               }, 0);
             }, 2000);
           }
