@@ -24,7 +24,6 @@ import NavigationButtons from './components/NavigationButtons.vue';
 import MarkContentCheckbox from './components/MarkContentCheckbox.vue';
 import SuccessPage from './components/SuccessPage.vue';
 import { ClosingConfirmation, MainButton, useWebAppMainButton } from 'vue-tg';
-import { truncate } from 'fs/promises';
 
 const { onMainButtonClicked } = useWebAppMainButton();
 
