@@ -91,7 +91,7 @@ export default {
       this.currentIndex = Math.max(this.currentIndex - 1, 0);
       this.comment = this.currentContent.comment ? this.currentContent.comment : '';
     },
-    toggleContentMark(event) {
+    toggleContentMark() {
       if (this.currentContent.accept !== "TRUE"/* event.target.innerText.includes("❌") */) {
         this.currentContent.accept = "TRUE";
         this.contentChecked++
