@@ -171,6 +171,10 @@ export default {
   justify-content: space-between;
 }
 
+#video-frame {
+  display: none;
+}
+
 .button {
   width: 49%;
   padding: 10px;
