@@ -8,8 +8,11 @@
       <ContentItem v-if="currentContent" :content="currentContent" />
       <NavigationButtons @next="nextContent" @prev="prevContent" />
       <input type="text" placeholder="Введите комментарий" v-model="comment" class="comment-input" />
-      <MarkContentCheckbox @check="toggleContentMark" :marked="contentMarked" :currentIndex="currentIndex"
-        :totalContent="total" />
+      <!-- <MarkContentCheckbox @check="toggleContentMark" :marked="contentMarked" :currentIndex="currentIndex"
+        :totalContent="total" /> -->
+      <button @click="toggleContentMark" class="button-checked">{{ check[isChecked] }} &nbsp;&nbsp; {{ currentIndex +
+        1 }}/{{
+          totalContent }}</button>
       <MainButton v-if="allContentChecked" :has_shine_effect="true" :showMainButton="true" :is_progress_visible="true"
         :text="text" />
       <ClosingConfirmation />
@@ -21,7 +24,7 @@
 
 import ContentItem from './components/ContentItem.vue';
 import NavigationButtons from './components/NavigationButtons.vue';
-import MarkContentCheckbox from './components/MarkContentCheckbox.vue';
+// import MarkContentCheckbox from './components/MarkContentCheckbox.vue';
 import SuccessPage from './components/SuccessPage.vue';
 import { ClosingConfirmation, MainButton, useWebAppMainButton } from 'vue-tg';
 
@@ -40,7 +43,12 @@ export default {
       contentChecked: 0,
       reportSent: false,
       text: 'Отправить отчет',
-      loading: true
+      loading: true,
+      check: {
+        true: '✅',
+        false: '❌'
+      },
+      isChecked: false
     };
   },
   async created() {
@@ -94,9 +102,11 @@ export default {
     toggleContentMark() {
       if (this.currentContent.accept !== "TRUE"/* event.target.innerText.includes("❌") */) {
         this.currentContent.accept = "TRUE";
+        this.isChecked = true;
         this.contentChecked++
       } else {
         this.currentContent.accept = "FALSE";
+        this.isChecked = false;
         this.contentChecked--;
       }
     },
@@ -130,7 +140,7 @@ export default {
   components: {
     ContentItem,
     NavigationButtons,
-    MarkContentCheckbox,
+    // MarkContentCheckbox,
     SuccessPage,
     MainButton,
     ClosingConfirmation
