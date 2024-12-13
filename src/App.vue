@@ -92,6 +92,7 @@ export default {
     },
     prevContent() {
       this.currentIndex = Math.max(this.currentIndex - 1, 0);
+      this.currentContent.comment = this.comment;
       this.comment = this.currentContent.comment ? this.currentContent.comment : '';
       console.log(this.currentContent);
       console.log(this.contentData);
