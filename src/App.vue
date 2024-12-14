@@ -1,5 +1,6 @@
 <template>
   <div>
+    <UnAvailableData v-if="!appAvailable" />
     <div v-if="reportSent">
       <SuccessPage />
     </div>
@@ -24,6 +25,7 @@ import NavigationButtons from './components/NavigationButtons.vue';
 import MarkContentCheckbox from './components/MarkContentCheckbox.vue';
 import SuccessPage from './components/SuccessPage.vue';
 import { ClosingConfirmation, MainButton, useWebAppMainButton } from 'vue-tg';
+import UnAvailableData from './components/UnAvailableData.vue';
 
 const { onMainButtonClicked } = useWebAppMainButton();
 
@@ -46,15 +48,19 @@ export default {
         false: '❌',
       },
       isChecked: false,
+      appAvailable: false
     };
   },
   async created() {
     try {
-      this.loading = true;
+      // this.loading = true;
       const response = await fetch('/get-all-data');
       const { data } = await response.json();
       this.contentData = data;
-      this.loading = false;
+      if (data) {
+        this.appAvailable = true;
+      }
+      // this.loading = false;
     } catch (error) {
       console.error('Ошибка при получении данных:', error);
     }
@@ -142,7 +148,8 @@ export default {
     MarkContentCheckbox,
     SuccessPage,
     MainButton,
-    ClosingConfirmation
+    ClosingConfirmation,
+    UnAvailableData
   }
 };
 </script>
