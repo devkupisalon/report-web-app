@@ -232,4 +232,10 @@ img {
   font-size: 150px;
   color: green;
 }
+
+#video-frame{
+  width: 100%; 
+  height: 70vh;
+  border-radius: 10px;
+}
 </style>
