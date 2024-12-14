@@ -1,6 +1,6 @@
 <template>
     <div class="unavailable">
-        <span>This application is currently unavailable. &#128533;</span>
+        <span>This application is currently unavailable. 😓</span>
     </div>
 </template>
 
