@@ -9,6 +9,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
+    padding: 10px 20px;
     height: 100vh;
     font-size: 20px;
     background: #333;
